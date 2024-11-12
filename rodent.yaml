@@ -1,0 +1,261 @@
+board: BTT Rodent V1.0
+name: BTT CNC
+meta: (10.11.2024) by BTT
+
+kinematics:
+  Cartesian:
+
+# stepping:
+#   engine: RMT
+#   idle_ms: 250
+#   dir_delay_us: 1
+#   pulse_us: 2
+#   disable_delay_us: 0
+stepping:
+  engine: I2S_STREAM
+  idle_ms: 255
+  pulse_us: 4
+  dir_delay_us: 1
+  disable_delay_us: 0
+
+axes:
+  shared_stepper_disable_pin: NO_PIN
+  x:
+    steps_per_mm: 800.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      positive_direction: false
+      mpos_mm: 150.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 200.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: gpio.35
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      tmc_5160:
+        step_pin: I2SO.2
+        direction_pin: I2SO.1
+        disable_pin: I2SO.0
+        cs_pin: gpio.5
+        spi_index: 1
+        r_sense_ohms: 0.022
+        run_amps: 0.5
+        hold_amps: 0.5
+        microsteps: 8
+        toff_disable: 0
+        toff_stealthchop: 5
+        use_enable: false
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        stallguard: 16
+        stallguard_debug: false
+        toff_coolstep: 3
+        tpfd: 4
+
+  y:
+    steps_per_mm: 800.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      positive_direction: true
+      mpos_mm: 150.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 200.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: gpio.34
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      tmc_5160:
+        step_pin: I2SO.5
+        direction_pin: I2SO.4
+        disable_pin: I2SO.7
+        cs_pin: NO_PIN
+        spi_index: 2
+        r_sense_ohms: 0.022
+        run_amps: 0.5
+        hold_amps: 0.5
+        microsteps: 8
+        toff_disable: 0
+        toff_stealthchop: 5
+        use_enable: false
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        stallguard: 16
+        stallguard_debug: false
+        toff_coolstep: 3
+        tpfd: 4
+
+  z:
+    steps_per_mm: 800.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      positive_direction: true
+      mpos_mm: 150.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 800.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: gpio.33:pu
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      tmc_5160:
+        step_pin: I2SO.10
+        direction_pin: I2SO.9
+        disable_pin: I2SO.8
+        cs_pin: NO_PIN
+        spi_index: 3
+        r_sense_ohms: 0.022
+        run_amps: 0.500
+        hold_amps: 0.500
+        microsteps: 8
+        toff_disable: 0
+        toff_stealthchop: 5
+        use_enable: false
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        stallguard: 16
+        stallguard_debug: false
+        toff_coolstep: 3
+        tpfd: 4
+
+  a:
+    # E0
+    steps_per_mm: 157.750
+    max_rate_mm_per_min: 18000.000
+    acceleration_mm_per_sec2: 1500.000
+    max_travel_mm: 325.000
+    soft_limits: true
+    homing:
+      cycle: 1
+      positive_direction: true
+      mpos_mm: 150.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 800.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: gpio.32:pu
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      tmc_5160:
+        step_pin: I2SO.13
+        direction_pin: I2SO.12
+        disable_pin: I2SO.15
+        cs_pin: NO_PIN
+        spi_index: 4
+        r_sense_ohms: 0.022
+        run_amps: 0.5
+        hold_amps: 0.5
+        microsteps: 16
+        toff_disable: 0
+        toff_stealthchop: 5
+        use_enable: false
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        stallguard: 16
+        stallguard_debug: false
+        toff_coolstep: 3
+        tpfd: 4
+
+i2so:
+  bck_pin: gpio.22
+  data_pin: gpio.21
+  ws_pin: gpio.17
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+sdcard:
+  cs_pin: gpio.0
+  card_detect_pin: NO_PIN
+  frequency_hz: 8000000
+# I2SO.3
+
+# coolant:
+#   flood_pin: gpio.2:high
+#   mist_pin:  gpio.3:low
+# gpio.4 # HB MOS
+
+# probe:
+#   pin: gpio.5:low:pu
+#   toolsetter_pin: gpio.14:low
+
+# Begin Huanyang
+uart1:
+  txd_pin: gpio.15
+  rxd_pin: gpio.16
+  rts_pin: gpio.14
+  baud: 9600
+  mode: 8N1
+
+Huanyang:
+  uart_num: 1
+  modbus_id: 1
+  tool_num: 0
+  speed_map: 0=0% 0=25% 6000=25% 24000=100%
+  off_on_alarm: false
+
+# PWM:
+#   pwm_hz: 5000
+#   output_pin: gpio.13
+#   enable_pin: gpio.25
+#   direction_pin: gpio.15
+#   disable_with_s0: false
+#   s0_with_disable: false
+#   spinup_ms: 0
+#   spindown_ms: 0
+#   tool_num: 0
+#   speed_map: 0=0% 10000=100%
+#   off_on_alarm: false
+
+i2c0:
+   sda_pin: gpio.27
+   scl_pin: gpio.26
+
+oled:
+   i2c_num: 0
+   i2c_address: 60
+   width: 128
+   height: 64
+   radio_delay_ms: 1000
+
+status_outputs:
+  report_interval_ms: 500
+  idle_pin: I2SO.11:low
+  run_pin: I2SO.14:low
+  alarm_pin: I2SO.3:low
+# hold_pin: gpio.16
