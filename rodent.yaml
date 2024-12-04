@@ -1,16 +1,10 @@
 board: BTT Rodent V1.0
 name: BTT CNC
-meta: (10.11.2024) by BTT
+meta: (04.12.2024) by BTT
 
 kinematics:
   Cartesian:
 
-# stepping:
-#   engine: RMT
-#   idle_ms: 250
-#   dir_delay_us: 1
-#   pulse_us: 2
-#   disable_delay_us: 0
 stepping:
   engine: I2S_STREAM
   idle_ms: 255
@@ -203,16 +197,6 @@ sdcard:
   cs_pin: gpio.0
   card_detect_pin: NO_PIN
   frequency_hz: 8000000
-# I2SO.3
-
-# coolant:
-#   flood_pin: gpio.2:high
-#   mist_pin:  gpio.3:low
-# gpio.4 # HB MOS
-
-# probe:
-#   pin: gpio.5:low:pu
-#   toolsetter_pin: gpio.14:low
 
 # Begin Huanyang
 uart1:
@@ -228,19 +212,6 @@ Huanyang:
   tool_num: 0
   speed_map: 0=0% 0=25% 6000=25% 24000=100%
   off_on_alarm: false
-
-# PWM:
-#   pwm_hz: 5000
-#   output_pin: gpio.13
-#   enable_pin: gpio.25
-#   direction_pin: gpio.15
-#   disable_with_s0: false
-#   s0_with_disable: false
-#   spinup_ms: 0
-#   spindown_ms: 0
-#   tool_num: 0
-#   speed_map: 0=0% 10000=100%
-#   off_on_alarm: false
 
 i2c0:
    sda_pin: gpio.27
@@ -258,4 +229,4 @@ status_outputs:
   idle_pin: I2SO.11:low
   run_pin: I2SO.14:low
   alarm_pin: I2SO.3:low
-# hold_pin: gpio.16
+
